@@ -8,6 +8,7 @@
 namespace WpShiftStudio\WCMembershipProduct;
 
 use WpShiftStudio\WCMembershipProduct\Database\Migrator;
+use WpShiftStudio\WCMembershipProduct\Admin\ProductAdmin;
 
 /**
  * Handles plugin activation, deactivation, and hook registration.
@@ -71,8 +72,8 @@ class Init {
 		// Declare HPOS compatibility.
 		add_action( 'before_woocommerce_init', array( __CLASS__, 'declare_hpos_compatibility' ) );
 
-		// Future hook registrations will go here.
-		// Product type, checkout fields, access control, admin, cron, etc.
+		// Product type admin.
+		ProductAdmin::register_hooks();
 	}
 
 	/**
