@@ -9,6 +9,7 @@ namespace WpShiftStudio\WCMembershipProduct;
 
 use WpShiftStudio\WCMembershipProduct\Database\Migrator;
 use WpShiftStudio\WCMembershipProduct\Admin\ProductAdmin;
+use WpShiftStudio\WCMembershipProduct\Access\AccessManager;
 
 /**
  * Handles plugin activation, deactivation, and hook registration.
@@ -74,6 +75,9 @@ class Init {
 
 		// Product type admin.
 		ProductAdmin::register_hooks();
+
+		// Access management (order completion, grants, revocations).
+		AccessManager::register_hooks();
 	}
 
 	/**
