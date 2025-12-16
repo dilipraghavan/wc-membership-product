@@ -10,6 +10,9 @@ namespace WpShiftStudio\WCMembershipProduct;
 use WpShiftStudio\WCMembershipProduct\Database\Migrator;
 use WpShiftStudio\WCMembershipProduct\Admin\ProductAdmin;
 use WpShiftStudio\WCMembershipProduct\Access\AccessManager;
+use WpShiftStudio\WCMembershipProduct\Checkout\CheckoutFields;
+use WpShiftStudio\WCMembershipProduct\Checkout\CheckoutValidator;
+use WpShiftStudio\WCMembershipProduct\Checkout\CheckoutProcessor;
 
 /**
  * Handles plugin activation, deactivation, and hook registration.
@@ -78,6 +81,11 @@ class Init {
 
 		// Access management (order completion, grants, revocations).
 		AccessManager::register_hooks();
+
+		// Checkout fields (rendering, validation, saving).
+		CheckoutFields::register_hooks();
+		CheckoutValidator::register_hooks();
+		CheckoutProcessor::register_hooks();
 	}
 
 	/**
