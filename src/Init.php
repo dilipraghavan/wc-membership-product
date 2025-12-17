@@ -10,6 +10,7 @@ namespace WpShiftStudio\WCMembershipProduct;
 use WpShiftStudio\WCMembershipProduct\Database\Migrator;
 use WpShiftStudio\WCMembershipProduct\Admin\ProductAdmin;
 use WpShiftStudio\WCMembershipProduct\Access\AccessManager;
+use WpShiftStudio\WCMembershipProduct\Access\ContentRestrictor;
 use WpShiftStudio\WCMembershipProduct\Checkout\CheckoutFields;
 use WpShiftStudio\WCMembershipProduct\Checkout\CheckoutValidator;
 use WpShiftStudio\WCMembershipProduct\Checkout\CheckoutProcessor;
@@ -86,6 +87,9 @@ class Init {
 		CheckoutFields::register_hooks();
 		CheckoutValidator::register_hooks();
 		CheckoutProcessor::register_hooks();
+
+		// Content restriction (shortcode, meta box).
+		ContentRestrictor::register_hooks();
 	}
 
 	/**
