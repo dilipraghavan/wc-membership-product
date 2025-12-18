@@ -9,11 +9,13 @@ namespace WpShiftStudio\WCMembershipProduct;
 
 use WpShiftStudio\WCMembershipProduct\Database\Migrator;
 use WpShiftStudio\WCMembershipProduct\Admin\ProductAdmin;
+use WpShiftStudio\WCMembershipProduct\Admin\AdminMenu;
 use WpShiftStudio\WCMembershipProduct\Access\AccessManager;
 use WpShiftStudio\WCMembershipProduct\Access\ContentRestrictor;
 use WpShiftStudio\WCMembershipProduct\Checkout\CheckoutFields;
 use WpShiftStudio\WCMembershipProduct\Checkout\CheckoutValidator;
 use WpShiftStudio\WCMembershipProduct\Checkout\CheckoutProcessor;
+use WpShiftStudio\WCMembershipProduct\Cron\ExpirationCron;
 
 /**
  * Handles plugin activation, deactivation, and hook registration.
@@ -80,6 +82,9 @@ class Init {
 		// Product type admin.
 		ProductAdmin::register_hooks();
 
+		// Admin menu (membership list table).
+		AdminMenu::register_hooks();
+
 		// Access management (order completion, grants, revocations).
 		AccessManager::register_hooks();
 
@@ -90,6 +95,9 @@ class Init {
 
 		// Content restriction (shortcode, meta box).
 		ContentRestrictor::register_hooks();
+
+		// Expiration cron (daily membership expiration).
+		ExpirationCron::register_hooks();
 	}
 
 	/**
